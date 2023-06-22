@@ -13,6 +13,7 @@ class update_img extends Model
         'nombre_url',
         'nombre_descrip',
         'etiqueta', 
-        'fecha'
+        'fecha',
+        'descripcion',
     ];
 }

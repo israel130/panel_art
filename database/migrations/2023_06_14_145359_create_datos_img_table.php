@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('nombre_descrip')->nullable;
             $table->string('etiqueta')->nullable;
             $table->string('fecha')->nullable;
+            $table->string('descripcion')->nullable;
             $table->timestamps();
         });
     }

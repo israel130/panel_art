@@ -21,8 +21,9 @@ class art extends Controller
             $datos = new update_img();
             $datos->nombre_url     = $nombreImagen;
             $datos->nombre_descrip = $request->NOMBRE;
-            $datos->etiqueta   = $request->ETIQUETA;
-            $datos->fecha      = date('Y-m-d');
+            $datos->etiqueta       = $request->ETIQUETA;
+            $datos->descripcion    = $request->DESCRIPCION;
+            $datos->fecha          = date('Y-m-d');
             $datos->save();
 
             return response()->json([
@@ -33,14 +34,12 @@ class art extends Controller
             return response()->json(['error' => 'No se ha enviado ninguna imagen'], 400);
         }
     }
-
     public function datos_img_catalogo(Request $request)
     {   
         $TABLA = DB::table('datos_img')
             ->get();
         return json_encode($TABLA);
     }
-
     public function eliminar_img_catalogo(Request $request)
     {   
         
@@ -93,7 +92,6 @@ class art extends Controller
             ->get();
         return json_encode($TABLA);
     }
-
     public function eliminar_img_carrusel(Request $request)
     {   
         
@@ -107,5 +105,24 @@ class art extends Controller
             'delete'=> $deleted,
             'img'=> $path_imagen,
         ]);
+    }
+    public function datos_por_id(Request $request)
+    {   
+        $TABLA = DB::table('datos_img')
+            ->where('id', '=' , $request->id)
+            ->first();
+        return json_encode($TABLA);
+    }
+
+    public function UPDATE_IMG_DATOS(Request $request){
+
+        DB::table('datos_img')
+        ->where('id','=', $request->id)
+        ->update([
+            'nombre_descrip' => $request->nombre_art,
+            'etiqueta'       => $request->etiqueta_artid,
+            'descripcion'    => $request->descripcion_art,
+        ]);
+        return json_encode(true);
     }
 }

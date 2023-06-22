@@ -26,6 +26,8 @@ Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified'])-
     Route::get('/cantidad_img_carrusel',[App\Http\Controllers\art::class ,'cantidad_img_carrusel']);
     Route::get('/datos_img_carrusel',[App\Http\Controllers\art::class ,'datos_img_carrusel']);
     Route::get('/eliminar_img_carrusel',[App\Http\Controllers\art::class ,'eliminar_img_carrusel']);
+    Route::get('/datos_por_id',[App\Http\Controllers\art::class ,'datos_por_id']);
+    Route::post('/UPDATE_IMG_DATOS',[App\Http\Controllers\art::class ,'UPDATE_IMG_DATOS']);
     
 });
 
